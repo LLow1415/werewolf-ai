@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://byic8bh6a37qr"]
+
+[ext_resource type="Script" uid="uid://beq0ics5o6ts8" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://df0aauwso2s10" path="res://models/bean.glb" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
+
+[node name="Player" type="CharacterBody3D" unique_id=490430908]
+collision_layer = 7
+script = ExtResource("1_3vyb7")
+
+[node name="bean" parent="." unique_id=182128445 instance=ExtResource("2_g2els")]
+
+[node name="beanCollision" type="CollisionShape3D" parent="." unique_id=1961650278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94418085, 0)
+shape = SubResource("CapsuleShape3D_qhqgy")

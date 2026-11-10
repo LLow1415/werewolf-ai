@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://7k0c5js713vq"]
+
+[ext_resource type="PackedScene" uid="uid://byic8bh6a37qr" path="res://scenes/player.tscn" id="1_55nwl"]
+[ext_resource type="PackedScene" uid="uid://bsjgsmsn5iyp4" path="res://scenes/werewolf.tscn" id="2_dfjc4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pp2u"]
+size = Vector3(9, 1, 7)
+
+[sub_resource type="Sky" id="Sky_dfjc4"]
+
+[sub_resource type="Environment" id="Environment_55nwl"]
+background_mode = 1
+background_color = Color(0.6379461, 0.16592926, 0.00929607, 1)
+background_energy_multiplier = 0.4
+sky = SubResource("Sky_dfjc4")
+
+[node name="StartTest" type="Node3D" unique_id=2063087556]
+
+[node name="Player" parent="." unique_id=490430908 instance=ExtResource("1_55nwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2122164)
+
+[node name="Werewolf" parent="." unique_id=1495507423 node_paths=PackedStringArray("player") instance=ExtResource("2_dfjc4")]
+player = NodePath("../Player")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=488349316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=74804909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+shape = SubResource("BoxShape3D_2pp2u")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=820913236]
+transform = Transform3D(-1, 0, 8.742278e-08, 4.371139e-08, 0.8660254, 0.5, -7.5710346e-08, 0.5, -0.8660254, 0, 4, -5)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=8269281]
+environment = SubResource("Environment_55nwl")
