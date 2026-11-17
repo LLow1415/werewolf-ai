@@ -1,3 +1,3 @@
 extends Node3D
 
-var player_scent = 0
+var scent := 0.0

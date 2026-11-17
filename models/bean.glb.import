@@ -42,7 +42,6 @@ materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:Sphere_001": {
-"generate/physics": true,
 "physics/shape_type": 6
 }
 }

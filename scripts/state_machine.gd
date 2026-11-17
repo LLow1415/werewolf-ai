@@ -1,11 +1,37 @@
-extends Node3D
+class_name StateMachine extends Node
 
+## The initial state of the state machine. not set, so the first child node is used.
+@export var initial_state: State = null
 
-# Called when the node enters the scene tree for the first time.
+@onready var state: State = (func get_initial_state() -> State:
+	return initial_state if initial_state != null else get_child(0)
+).call()
+
 func _ready() -> void:
-	pass # Replace with function body.
+	# Give every state a reference to the state machine. Then connects the finished signal to the function
+	for state_node: State in find_children("*", "State"):
+		state_node.finished.connect(_transition_to_next_state)
+	
+	# Waits for werewolf's onready and _ready to be ready
+	await owner.ready
+	state.enter("")
+	
+
+# Just switches states if it exists, also sends info on old state in case relevant
+func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
+	if not has_node(target_state_path):
+		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
+		return
+
+	var previous_state_path := state.name
+	state.exit()
+	state = get_node(target_state_path)
+	state.enter(previous_state_path, data)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	state.update(delta)
+
+
+func _physics_process(delta: float) -> void:
+	state.physics_update(delta)
