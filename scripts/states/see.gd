@@ -9,6 +9,7 @@ func physics_update(_delta: float) -> void:
 		werewolf.vision_ray.target_position = werewolf.vision_ray.to_local(werewolf.player.global_position)
 		if werewolf.vision_ray.is_colliding():
 			if werewolf.vision_ray.get_collider() == werewolf.player:
+				print("player found")
 				finished.emit(ATTACK)
 			else:
 				finished.emit(SMELL)

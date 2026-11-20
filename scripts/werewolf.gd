@@ -4,9 +4,9 @@ extends CharacterBody3D
 #Keep Allty
 
 # Self Nodes
-@onready var vision_node = $Vision
+@onready var vision_node = $Pivot/Vision
 @onready var smell_node = $Smell
-@onready var vision_ray = $Vision/RayCast3D
+@onready var vision_ray = $Pivot/Vision/RayCast3D
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 # External Nodes
@@ -47,15 +47,14 @@ func set_movement_target(movement_target: Vector3):
 
 func _physics_process(delta: float) -> void:
 	if navigation_agent.is_navigation_finished():
-		print("done")
 		return
 
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
+	if(current_agent_position.direction_to(next_path_position)):
+		$Pivot.basis = Basis.looking_at(-current_agent_position.direction_to(next_path_position))
 	
 	# Moving the Character
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 	move_and_slide()
 	
-func _process(delta: float) -> void:
-	print(global_position.y)

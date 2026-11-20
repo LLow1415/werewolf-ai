@@ -64,7 +64,7 @@ shadow_mesh = SubResource("ArrayMesh_aa7c3")
 [node name="StartTest" type="Node3D" unique_id=2063087556]
 
 [node name="Player" parent="." unique_id=490430908 instance=ExtResource("1_55nwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.783093, 3.4048214, 17.63035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.156221, -0.31603003, 17.336243)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=8269281]
 environment = SubResource("Environment_55nwl")
@@ -73,7 +73,7 @@ environment = SubResource("Environment_55nwl")
 transform = Transform3D(1, 0, 0, 0, -0.5881348, 0.8087629, 0, -0.8087629, -0.5881348, 0, 5.259102, -6.1728687)
 
 [node name="Werewolf" parent="." unique_id=1495507423 node_paths=PackedStringArray("player") instance=ExtResource("2_dfjc4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.421848, -17.056227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.034)
 player = NodePath("../Player")
 
 [node name="testmap" parent="." unique_id=197990557 instance=ExtResource("3_dfjc4")]
