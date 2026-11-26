@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://beq0ics5o6ts8" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://df0aauwso2s10" path="res://models/bean.glb" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://bvts5u3x1loc" path="res://audio/footstep.mp3" id="2_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
 
@@ -9,7 +10,17 @@
 collision_layer = 7
 script = ExtResource("1_3vyb7")
 
-[node name="bean" parent="." unique_id=182128445 instance=ExtResource("2_g2els")]
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=716755658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94418085, 0)
+stream = ExtResource("2_qhqgy")
+volume_db = -35.0
+
+[node name="Pivot" type="Node3D" parent="." unique_id=848185739]
+
+[node name="bean" parent="Pivot" unique_id=182128445 instance=ExtResource("2_g2els")]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=1438625016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55843794, 1.8029888, 1.9029326)
 
 [node name="beanCollision" type="CollisionShape3D" parent="." unique_id=1961650278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94418085, 0)

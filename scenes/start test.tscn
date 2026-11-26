@@ -79,6 +79,9 @@ player = NodePath("../Player")
 [node name="testmap" parent="." unique_id=197990557 instance=ExtResource("3_dfjc4")]
 unique_name_in_owner = true
 
+[node name="Cube_002" parent="testmap" index="1" unique_id=851847721]
+layers = 5
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1325875260]
 navigation_mesh = SubResource("NavigationMesh_4oi2i")
 

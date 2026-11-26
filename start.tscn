@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://coaigdhh4a87b"]
+
+[ext_resource type="PackedScene" uid="uid://bw0jvrdi7sqt5" path="res://models/Mansion/MansionModular.fbx" id="1_qn1rc"]
+[ext_resource type="Texture2D" uid="uid://dkky8wm3ay8fq" path="res://models/Mansion/MansionModular_5.png" id="2_1n0d2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soniy"]
+resource_name = "WoodDeck"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_1n0d2")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r1vkp"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, 0, 0.02, 0.02, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"name": "WoodDeck",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("CtcjPArXIzwAAAAACtcjPArXI7wAAAAACtcjvArXI7wAAAAACtcjvArXIzwAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tg6db"]
+resource_name = "Plane_066"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, 0, 0.02, 0.02, 1e-05),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": SubResource("StandardMaterial3D_soniy"),
+"name": "WoodDeck",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("CtcjPArXIzwAAAAACtcjPArXI7wAAAAACtcjvArXI7wAAAAACtcjvArXIzwAAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_r1vkp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qn1rc"]
+size = Vector3(0.02, 0.02, 0.001)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1n0d2"]
+vertices = PackedVector3Array(0.01, 0.01, 0, 0.01, -0.01, 0, -0.01, -0.01, 0, -0.01, 0.01, 0)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(2, 3, 0)]
+
+[node name="Node3D" type="Node3D" unique_id=1461292032]
+
+[node name="MansionModular" parent="." unique_id=643116525 instance=ExtResource("1_qn1rc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.59153, 0)
+
+[node name="FloorWalnut_001" type="MeshInstance3D" parent="." unique_id=1029706760]
+transform = Transform3D(500, 0, 0, 0, -2.79884e-05, 167.4, 0, -640.3, -7.317286e-06, 0, 0, 0)
+mesh = SubResource("ArrayMesh_tg6db")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloorWalnut_001" unique_id=1034423705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorWalnut_001/StaticBody3D" unique_id=923466899]
+shape = SubResource("BoxShape3D_qn1rc")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="FloorWalnut_001" unique_id=1259411223]
+navigation_mesh = SubResource("NavigationMesh_1n0d2")
+
+[editable path="MansionModular"]

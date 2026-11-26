@@ -7,13 +7,13 @@ class_name StateMachine extends Node
 	return initial_state if initial_state != null else get_child(0)
 ).call()
 
+# Give every state a reference to the state machine. Then connects the finished signal to the function
 func _ready() -> void:
-	# Give every state a reference to the state machine. Then connects the finished signal to the function
 	for state_node: State in find_children("*", "State"):
 		state_node.finished.connect(_transition_to_next_state)
-	
-	# Waits for werewolf's onready and _ready to be ready
+
 	await owner.ready
+	await $"../Pivot/Perception/Smell".ready
 	state.enter("")
 	
 
