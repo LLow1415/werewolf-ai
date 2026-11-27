@@ -20,3 +20,6 @@ func physics_update(_delta: float) -> void:
 	if werewolf.health < werewolf.previous_health:
 		werewolf.health = werewolf.previous_health
 		finished.emit(INJURED)
+	if werewolf.target == werewolf.player and werewolf.affection == 100:
+		print("hello")
+		finished.emit(PLAY)

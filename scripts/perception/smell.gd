@@ -14,6 +14,6 @@ func _process(delta: float) -> void:
 	var distances: Array[float] = [10, 20, 30, 40, 50]
 	for weights_reward in distances:
 		if werewolf.distance <= weights_reward:
-			werewolf.smell_weight = .1 + weights_reward/100
+			werewolf.smell_weight = .3 + weights_reward/100
 			return
 	

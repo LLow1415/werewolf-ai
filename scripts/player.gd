@@ -8,6 +8,8 @@ extends CharacterBody3D
 
 @export var fall_acceleration = 75
 @export var speed = 10
+@export var werewolf : Node3D
+
 
 var follow_speed = 10
 var target_velocity = Vector3.ZERO
@@ -33,6 +35,13 @@ func _physics_process(delta):
 		speed = base_speed
 		if(not $Footsteps.is_playing()):
 			$Footsteps.play()
+	
+	# Replace your old shooting check in _physics_process with this:
+	if Input.is_action_just_pressed("shoot"):
+		werewolf.health -= 10
+	elif Input.is_action_just_pressed("ball"):
+		werewolf.affection = 100
+
 	
 	target_velocity.x = direction.x * speed 
 	target_velocity.z = direction.z * speed

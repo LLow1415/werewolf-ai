@@ -26,12 +26,17 @@ data = PackedVector3Array(-4.6129, 1.8375, 12.271899, -4.5243, 1.4339, 12.271899
 size = Vector3(2.4, 2.3, 1.555)
 
 [node name="Werewolf" type="CharacterBody3D" unique_id=1495507423]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_b78x2")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1944799694]
 
 [node name="WerewolfModel" parent="Pivot" unique_id=257231790 instance=ExtResource("13_vleak")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Cube_001" parent="Pivot/WerewolfModel/rig/Skeleton3D" parent_id_path=PackedInt32Array(257231790, 61267507) index="0" unique_id=1129141591]
+layers = 9
 
 [node name="Perception" type="Node3D" parent="Pivot" unique_id=1615187624]
 
@@ -56,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1130881, 0.54318)
 collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Perception/Vision" unique_id=1081250793]
-transform = Transform3D(1, 0, 0, 0, 0.9948929, -0.1009361, 0, 0.1009361, 0.9948929, 0, -0.43819547, -1.8821044)
+transform = Transform3D(5.29, 0, 0, 0, 5.2629833, -0.53395194, 0, 0.53395194, 5.2629833, 0, -8.137871, -3.7704208)
 shape = SubResource("ConcavePolygonShape3D_1rqcr")
 
 [node name="AttackRange" type="Area3D" parent="Pivot/Perception" unique_id=591393977]

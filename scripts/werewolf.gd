@@ -25,7 +25,6 @@ extends CharacterBody3D
 
 var target_velocity = Vector3.ZERO
 var theta: float
-# var can_smell = false
 var in_range = false
 var can_see = false
 var can_hear = false

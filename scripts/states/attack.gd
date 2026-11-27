@@ -6,12 +6,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 #Attempts to attack, or dive
 func physics_update(_delta: float) -> void:
+	if werewolf.target == werewolf.player and werewolf.affection == 100:
+			print("hello")
+			finished.emit(PLAY)
+	
 	
 	if not werewolf.cooldown:
 		werewolf.navigation_agent.set_target_position(werewolf.target.global_position)
 		if werewolf.in_range:
-			if werewolf.target == werewolf.player and werewolf.affection == 100:
-				finished.emit(PLAY)
 			werewolf.target.health -= 10
 			if werewolf.target.health <= 0:
 				finished.emit(EAT)

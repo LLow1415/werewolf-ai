@@ -6,6 +6,6 @@ func _process(delta: float) -> void:
 	var distances: Array[float] = [30, 40, 50, 60, 70]
 	for weights_reward in distances:
 		if werewolf.distance <= weights_reward and footsteps.is_playing():
-			werewolf.audio_weight = .1 + weights_reward/100
+			werewolf.audio_weight = .3 + weights_reward/100
 		elif not footsteps.is_playing():
 			werewolf.audio_weight = .5
