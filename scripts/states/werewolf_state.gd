@@ -10,7 +10,6 @@ const PLAY = "Play"
 const EAT = "Eat"
 const SMELL = "Smell"
 const SEE = "See"
-const CHEAT = "Cheat"
 const LISTEN = "Listen"
 
 var werewolf: Werewolf

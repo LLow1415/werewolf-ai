@@ -1,11 +1,8 @@
-extends Node
+class_name PerceptionSystem extends Node3D
 
+var werewolf: Werewolf
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	await owner.ready
+	werewolf = owner as Werewolf
+	assert(werewolf != null, "In wrong node, must be in werewolf")

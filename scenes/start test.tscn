@@ -89,4 +89,7 @@ navigation_mesh = SubResource("NavigationMesh_4oi2i")
 visible = false
 mesh = SubResource("ArrayMesh_47ao7")
 
+[node name="Home" type="Node3D" parent="." unique_id=1344766616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.034)
+
 [editable path="testmap"]

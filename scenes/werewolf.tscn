@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmutsjkhid2f6" path="res://scripts/werewolf.gd" id="1_b78x2"]
 [ext_resource type="Script" uid="uid://dx7bhcsinjhyd" path="res://scripts/state_machine.gd" id="3_vleak"]
 [ext_resource type="Script" uid="uid://c37fuv2pfbkeh" path="res://scripts/states/idle.gd" id="4_1rqcr"]
+[ext_resource type="Script" uid="uid://bwulpv8rop5y5" path="res://scripts/perception/attack_range.gd" id="5_kiqt8"]
 [ext_resource type="Script" uid="uid://tyr458jqx28u" path="res://scripts/states/hunt.gd" id="5_r4161"]
 [ext_resource type="Script" uid="uid://doqmuhj43ylrr" path="res://scripts/states/attack.gd" id="6_kiqt8"]
 [ext_resource type="Script" uid="uid://bsonus8cov8v3" path="res://scripts/states/sleep.gd" id="7_qnqsq"]
@@ -12,7 +13,6 @@
 [ext_resource type="Script" uid="uid://dun4fkymy6ieb" path="res://scripts/perception/smell.gd" id="11_g8yre"]
 [ext_resource type="Script" uid="uid://bo4xcbleqc4lc" path="res://scripts/perception/see.gd" id="12_nmrkj"]
 [ext_resource type="Script" uid="uid://ctkdvls5v6il5" path="res://scripts/perception/listen.gd" id="13_1rqcr"]
-[ext_resource type="Script" uid="uid://dqkkcp30llkpy" path="res://scripts/states/cheat.gd" id="13_5ouph"]
 [ext_resource type="PackedScene" uid="uid://b74j4yk6l44gd" path="res://models/WerewolfModel.glb" id="13_vleak"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_64fxd"]
@@ -27,37 +27,6 @@ size = Vector3(2.4, 2.3, 1.555)
 
 [node name="Werewolf" type="CharacterBody3D" unique_id=1495507423]
 script = ExtResource("1_b78x2")
-
-[node name="StateMachine" type="Node3D" parent="." unique_id=1173322546]
-script = ExtResource("3_vleak")
-
-[node name="Idle" type="Node3D" parent="StateMachine" unique_id=1681362700]
-script = ExtResource("4_1rqcr")
-
-[node name="Hunt" type="Node3D" parent="StateMachine" unique_id=775020194]
-script = ExtResource("5_r4161")
-
-[node name="Attack" type="Node3D" parent="StateMachine" unique_id=290833259]
-script = ExtResource("6_kiqt8")
-
-[node name="Sleep" type="Node3D" parent="StateMachine" unique_id=1754661393]
-script = ExtResource("7_qnqsq")
-
-[node name="Injured" type="Node3D" parent="StateMachine" unique_id=1496125686]
-script = ExtResource("8_y3jm7")
-
-[node name="Play" type="Node3D" parent="StateMachine" unique_id=154779591]
-script = ExtResource("9_6ip7l")
-
-[node name="Eat" type="Node3D" parent="StateMachine" unique_id=1397402211]
-script = ExtResource("10_d0j4a")
-
-[node name="Cheat" type="Node3D" parent="StateMachine" unique_id=1837249946]
-script = ExtResource("13_5ouph")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1141281545]
-debug_enabled = true
-debug_path_custom_color = Color(1, 0, 0.016666412, 1)
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1944799694]
 
@@ -87,11 +56,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1130881, 0.54318)
 collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Perception/Vision" unique_id=1081250793]
-transform = Transform3D(1, 0, 0, 0, 0.99899703, -0.044776026, 0, 0.044776026, 0.99899703, 0, -0.65195227, -1.8821044)
+transform = Transform3D(1, 0, 0, 0, 0.9948929, -0.1009361, 0, 0.1009361, 0.9948929, 0, -0.43819547, -1.8821044)
 shape = SubResource("ConcavePolygonShape3D_1rqcr")
 
 [node name="AttackRange" type="Area3D" parent="Pivot/Perception" unique_id=591393977]
 collision_mask = 2
+script = ExtResource("5_kiqt8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Perception/AttackRange" unique_id=1540407431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3029416, 0.83044994)
@@ -107,9 +77,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9387207, 0)
 shape = SubResource("CylinderShape3D_64fxd")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[connection signal="area_shape_entered" from="Pivot/Perception/Smell" to="." method="_on_smell_area_shape_entered"]
-[connection signal="area_shape_exited" from="Pivot/Perception/Smell" to="." method="_on_smell_area_shape_exited"]
-[connection signal="area_shape_entered" from="Pivot/Perception/Vision" to="." method="_on_vision_area_shape_entered"]
-[connection signal="area_shape_exited" from="Pivot/Perception/Vision" to="." method="_on_vision_area_shape_exited"]
-[connection signal="area_shape_entered" from="Pivot/Perception/Listen" to="." method="_on_listen_area_shape_entered"]
-[connection signal="area_shape_exited" from="Pivot/Perception/Listen" to="." method="_on_listen_area_shape_exited"]
+[node name="StateMachine" type="Node3D" parent="." unique_id=1173322546]
+script = ExtResource("3_vleak")
+
+[node name="Idle" type="Node3D" parent="StateMachine" unique_id=1681362700]
+script = ExtResource("4_1rqcr")
+
+[node name="Hunt" type="Node3D" parent="StateMachine" unique_id=775020194]
+script = ExtResource("5_r4161")
+
+[node name="Attack" type="Node3D" parent="StateMachine" unique_id=290833259]
+script = ExtResource("6_kiqt8")
+
+[node name="Sleep" type="Node3D" parent="StateMachine" unique_id=1754661393]
+script = ExtResource("7_qnqsq")
+
+[node name="Injured" type="Node3D" parent="StateMachine" unique_id=1496125686]
+script = ExtResource("8_y3jm7")
+
+[node name="Play" type="Node3D" parent="StateMachine" unique_id=154779591]
+script = ExtResource("9_6ip7l")
+
+[node name="Eat" type="Node3D" parent="StateMachine" unique_id=1397402211]
+script = ExtResource("10_d0j4a")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1141281545]
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0.016666412, 1)
+
+[editable path="Pivot/WerewolfModel"]

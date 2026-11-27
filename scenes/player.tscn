@@ -20,7 +20,7 @@ volume_db = -35.0
 [node name="bean" parent="Pivot" unique_id=182128445 instance=ExtResource("2_g2els")]
 
 [node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=1438625016]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55843794, 1.8029888, 1.9029326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5866048, 0)
 
 [node name="beanCollision" type="CollisionShape3D" parent="." unique_id=1961650278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94418085, 0)
